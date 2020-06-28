@@ -1,0 +1,89 @@
+---
+title: 如何发布一个npm包？
+date: 2018-05-22 16:00:00
+categories: 
+  - 编程学习
+tags: 
+  - 前端
+sidebar: auto
+permalink: /pages/2018-05-22-publish_npm_packages/
+---
+
+如何发布自己的npm项目。
+
+<!-- more -->
+
+## 注册一个npm账号
+
+[https://www.npmjs.com](https://www.npmjs.com)
+
+## 初始化一个npm项目
+
+```
+mkdir test && cd test
+npm init // 没有作用域
+npm init --scope=@scope-name // 团队账户可以创建作用域包
+```
+* package.json主要属性说明
+
+```
+{
+  "name": "test", // npm包名称
+  "version": "1.0.0", // 版本号
+  "description": "", // 描述
+  "main": "index.js", // 程序主入口
+  "module": "index.esm.js", // 定义 ES Module 入口
+  "types": "index.d.ts", // TypeScript 的入口
+  "files": [ // 需要发布的文件夹
+    "dist",
+    "static"
+  ],
+  "keywords": [ // 关键词
+    "typescript",
+    "nodejs"
+  ],
+  "scripts": { // npm 执行指令
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": { // 运行依赖。这一部分的仓库会随着npm install 安装到本地
+    "jquery": "^2.4.1"
+  },
+  "devDependencies": { // 开发依赖，不会安装到本地
+    "webpack": "^3.6.1"
+  },
+  "author": "", // 作者
+  "license": "ISC" // 许可证
+}
+```
+
+## 登录账户
+
+```
+npm login // 或者 npm adduser
+```
+根据提示输入用户名，密码以及邮箱信息，```npm whoami``` 检测登录账户
+
+## 发布npm包
+
+```
+npm publish
+
+npm publish --access public //团队账户发公共包
+
+npm install test // 发布完后可以安装
+
+```
+
+## 删除npm包
+
+```
+npm unpublish <package-name> -f
+
+npm unpublish <package-name>@<version> // 删除指定版本
+```
+
+## 参考链接
+
+[https://docs.npmjs.com/packages-and-modules/](https://docs.npmjs.com/packages-and-modules/)
+
+[https://docs.npmjs.com/files/package.json](https://docs.npmjs.com/files/package.json)
