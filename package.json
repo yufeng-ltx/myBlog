@@ -1,7 +1,7 @@
 {
   "name": "myblog",
   "version": "1.0.0",
-  "description": "个人站点——基于VuePress构建",
+  "description": "个人站点——基于VuePress构建1",
   "scripts": {
     "start": "nodemon --watch ./docs/.vuepress/**/*.* index.js",
     "dev": "vuepress dev docs",
