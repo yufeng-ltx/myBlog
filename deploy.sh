@@ -1,28 +1,23 @@
 #!/usr/bin/env sh
-
 # 确保脚本抛出遇到的错误
 set -e
+npm run build # 生成静态文件
+cd docs/.vuepress/dist # 进入生成的文件夹
 
-# 生成静态文件
-npm run build
-
-# 进入生成的文件夹
-cd docs/.vuepress/dist
-
-# 如果是发布到自定义域名
-# echo 'www.example.com' > CNAME
-
-git config --global user.name "yufeng-ltx"
-git config --global user.email "yufeng.ltx@gmail.com"
-
+# deploy to github
+if [ -z "$GITHUB_TOKEN" ]; then
+  msg='deploy'
+  githubUrl=git@github.com:yufeng-ltx/yufeng-ltx.github.io.git
+else
+  msg='来自github action的自动部署'
+  githubUrl=https://yufeng-ltx:${GITHUB_TOKEN}@github.com/yufeng-ltx/yufeng-ltx.github.io.git
+  git config --global user.name "yufeng-ltx"
+  git config --global user.email "yufeng.ltx@gmail.com"
+fi
 git init
 git add -A
-git commit -m 'deploy'
-
-# 如果发布到 https://<USERNAME>.github.io
-git push -f git@github.com:yufeng-ltx/yufeng-ltx.github.io.git master
-
-# 如果发布到 https://<USERNAME>.github.io/<REPO>
-# git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
+git commit -m "${msg}"
+git push -f $githubUrl master # 推送到github
 
 cd -
+rm -rf docs/.vuepress/dist
