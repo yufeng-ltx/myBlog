@@ -24,4 +24,3 @@ git commit -m "${msg}"
 git push -f $githubUrl master # publish github
 
 cd -
-rm -rf docs/.vuepress/dist
