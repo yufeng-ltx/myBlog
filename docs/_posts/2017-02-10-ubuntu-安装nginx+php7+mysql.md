@@ -6,7 +6,7 @@ categories:
 tags: 
   - Linux
 sidebar: auto
-permalink: /pages/2017-02-10-ubuntu 安装nginx+php7+mysql/
+permalink: /pages/2017-02-10-ubuntu-安装nginx+php7+mysql/
 ---
 
 升级php7，在ubuntu服务器上折腾了半天，这里做一下安装总结。

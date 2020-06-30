@@ -16,10 +16,10 @@ module.exports = {
   theme: 'vdoing',
   themeConfig: {
     nav: [
-      { text: '首页', link: '/' },
       { text: '分类', link: '/categories/' },
       { text: '标签', link: '/tags/' },
-      { text: '归档', link: '/archives/' }
+      { text: '归档', link: '/archives/' },
+      { text: 'Github', link: 'https://github.com/yufeng-ltx' },
     ],
     sidebar: 'structuring', // 侧边栏  'structuring' | { mode: 'structuring', collapsable: Boolean} | 'auto' | 自定义    温馨提示：目录页数据依赖于结构化的侧边栏数据，如果你不设置为'structuring',将无法使用目录页
     author: { // 文章默认的作者信息，可在md文件中单独配置此信息 String | {name: String, link: String}
@@ -27,7 +27,7 @@ module.exports = {
       link: 'https://github.com/yufeng-ltx' // 可选的
     },
     blogger:{ // 博主信息，显示在首页侧边栏
-      avatar: 'https://avatars1.githubusercontent.com/u/4463508',
+      avatar: '/images/avatars.png',
       name: 'yufeng-ltx',
       slogan: '专注前端开发'
     },
@@ -61,6 +61,17 @@ module.exports = {
       copyMessage: '复制成功', // default is 'Copy successfully and then paste it for use.'
       duration: 1000, // prompt message display time.
       showInMobile: false // whether to display on the mobile side, default: false.
+    }],
+    ['@vuepress/pwa', {
+      serviceWorker: true,
+      updatePopup: false
+    }],
+    ['@vuepress/medium-zoom', {
+      selector:'.theme-vdoing-content img:not(.no-zoom)', // 排除class是no-zoom的图片
+      options: {
+        background: 'rgba(0,0,0,0.6)',
+        margin: 16
+      }
     }]
   ]
 }
