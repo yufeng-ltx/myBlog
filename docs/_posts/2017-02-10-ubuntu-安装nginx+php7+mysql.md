@@ -53,23 +53,24 @@ permalink: /pages/2017-02-10-ubuntu-安装nginx+php7+mysql/
 
 这里列一段php-fpm 的配置代码：
 
-    server {
-        listen 80;
-        server_name test.com;
-        location / {
+``` R
+server {
+    listen 80;
+    server_name test.com;
+    location / {
         root /www/;
         index index.php index.html index.htm;
-        }
-        location ~* \.php$ {
+    }
+    location ~* \.php$ {
         root /www/;
         fastcgi_index index.php;
         fastcgi_pass 127.0.0.1:9000;
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_param SCRIPT_NAME $fastcgi_script_name;
-         }
     }
-
+}
+```
 软链nginx到bin目录下
 
     ln /usr/local/nginx/sbin/nginx /usr/local/bin
