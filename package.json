@@ -20,7 +20,7 @@
   "devDependencies": {
     "@vuepress/plugin-medium-zoom": "^1.5.2",
     "@vuepress/plugin-pwa": "^1.5.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "nodemon": "^2.0.4",
     "sass-loader": "^8.0.2",
     "vuepress": "^1.5.2",
